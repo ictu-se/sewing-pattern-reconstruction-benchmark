@@ -22,7 +22,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 
 | Check | Result | Status |
 |---|---:|---|
-| PDF pages | 30 | PASS |
+| PDF pages | 29 | PASS |
 | PDF page size | A4 | PASS |
 | Abstract length | 227 words | PASS |
 | Introduction length | 820 words | PASS |
@@ -40,6 +40,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 | URL fields in BibTeX | 0 | PASS |
 | Missing figure files | 0 | PASS |
 | Short paragraph candidates | 0 | PASS |
+| Low-variation numeric table columns | 0 remaining after cleanup | PASS |
 | Appendix mentions | 0 | PASS |
 | Target-journal/editor traces | 0 | PASS |
 | TODO/FIXME/placeholder traces | 0 | PASS |
@@ -86,6 +87,7 @@ Visual review found no broken pages, missing figures, unresolved references, or 
 - Rebuilt the PDF and regenerated the layout contact sheet after the structural changes.
 - Revised all figure/table placement controls so floats remain close to the relevant analysis text.
 - Expanded short diagnostic paragraphs so the manuscript no longer has paragraph-length candidates below the checker threshold.
+- Removed or summarized low-variation data displays: the category-completeness percentage column, mesh aspect-ratio columns, the consistency-score histogram, the near-identical render-baseline table/plot, and the near-constant combined-feature per-category column.
 - Verified that references are fully cited and DOI-complete.
 - Verified that the manuscript has no journal-targeting or editor-targeting traces.
 

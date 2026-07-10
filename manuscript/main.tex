@@ -196,29 +196,29 @@ Complete-evidence rate & 99.98\% \\
 
 \subsubsection{Category Coverage and Pattern Complexity}
 
-Table~\ref{tab:categorysummary} reports the full production category summary. The dataset spans low-complexity garments such as straight-side pants and two-panel skirts, intermediate garments such as dresses and jumpsuits, and high-complexity garments such as jackets and hooded jackets. Pattern complexity ranges from two panels and four stitches in simple skirts or sleeveless tees to nine panels and eighteen stitches in hooded jackets. Mean simulated mesh complexity ranges from 11,992 faces for straight-side pants to 37,743 faces for hooded jackets.
+Table~\ref{tab:categorysummary} reports the full production category summary. The dataset spans low-complexity garments such as straight-side pants and two-panel skirts, intermediate garments such as dresses and jumpsuits, and high-complexity garments such as jackets and hooded jackets. Pattern complexity ranges from two panels and four stitches in simple skirts or sleeveless tees to nine panels and eighteen stitches in hooded jackets. Mean simulated mesh complexity ranges from 11,992 faces for straight-side pants to 37,743 faces for hooded jackets, while evidence completeness is summarized separately because nearly all categories are effectively complete.
 
 \begin{table}[!htbp]
-\caption{Production category summary from the full 22,450-sample garment-pattern audit. \(C\) is mean evidence completeness. \(F_s\) is mean simulated face count. P/E/S gives mean panel, pattern-edge, and stitch counts.}\label{tab:categorysummary}
+\caption{Production category summary from the full 22,450-sample garment-pattern audit. \(F_s\) is mean simulated face count. P/E/S gives mean panel, pattern-edge, and stitch counts.}\label{tab:categorysummary}
 \centering
 \footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr}
 \toprule
-Category & \(N\) & Complete & \(C\) & \(F_s\) & P/E/S \\
+Category & \(N\) & Complete & \(F_s\) & P/E/S \\
 \midrule
-Pants straight sides & 1,000 & 1,000 & 100.000 & 11,992 & 4/20/6 \\
-Skirt 2 panels & 1,200 & 1,200 & 100.000 & 12,908 & 2/12/4 \\
-Skirt 4 panels & 1,600 & 1,600 & 100.000 & 15,140 & 4/24/8 \\
-Jumpsuit sleeveless & 2,000 & 1,999 & 99.967 & 16,682 & 6/39/14 \\
-Dress sleeveless & 2,550 & 2,547 & 99.965 & 17,894 & 4/29/10 \\
-Skirt 8 panels & 1,000 & 999 & 99.989 & 22,669 & 8/48/16 \\
-Tee sleeveless & 1,800 & 1,800 & 100.000 & 25,737 & 2/17/4 \\
-WB pants straight & 1,500 & 1,500 & 100.000 & 26,036 & 6/30/12 \\
-Jacket & 2,200 & 2,200 & 100.000 & 35,060 & 7/36/12 \\
-Tee & 2,300 & 2,300 & 100.000 & 35,166 & 6/33/12 \\
-WB dress sleeveless & 2,600 & 2,600 & 100.000 & 36,784 & 6/33/12 \\
-Jacket hood & 2,700 & 2,700 & 100.000 & 37,743 & 9/47/18 \\
+Pants straight sides & 1,000 & 1,000 & 11,992 & 4/20/6 \\
+Skirt 2 panels & 1,200 & 1,200 & 12,908 & 2/12/4 \\
+Skirt 4 panels & 1,600 & 1,600 & 15,140 & 4/24/8 \\
+Jumpsuit sleeveless & 2,000 & 1,999 & 16,682 & 6/39/14 \\
+Dress sleeveless & 2,550 & 2,547 & 17,894 & 4/29/10 \\
+Skirt 8 panels & 1,000 & 999 & 22,669 & 8/48/16 \\
+Tee sleeveless & 1,800 & 1,800 & 25,737 & 2/17/4 \\
+WB pants straight & 1,500 & 1,500 & 26,036 & 6/30/12 \\
+Jacket & 2,200 & 2,200 & 35,060 & 7/36/12 \\
+Tee & 2,300 & 2,300 & 35,166 & 6/33/12 \\
+WB dress sleeveless & 2,600 & 2,600 & 36,784 & 6/33/12 \\
+Jacket hood & 2,700 & 2,700 & 37,743 & 9/47/18 \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -245,29 +245,29 @@ Missing evidence is rare. The five incomplete samples occur in three production 
 
 \subsubsection{Mesh Quality Benchmark}
 
-The quantitative benchmark parses 22,450 production samples and computes mesh descriptors for both simulated and scan-imitation meshes. Table~\ref{tab:meshquality} shows that mean simulated face counts range from 11,992 for straight-side pants to 37,743 for hooded jackets. Scan-imitation meshes are usually slightly lighter than simulated meshes, with the largest reductions appearing in skirt-8 and waistband-dress categories. Across categories, mean triangle aspect ratios remain close to 1.33--1.35, indicating mostly regular triangulation under the implemented metric. Non-manifold edges are zero at category mean level, while boundary edges remain nonzero because garment surfaces are open along hems, seams, and garment boundaries.
+The quantitative benchmark parses 22,450 production samples and computes mesh descriptors for both simulated and scan-imitation meshes. Table~\ref{tab:meshquality} shows that mean simulated face counts range from 11,992 for straight-side pants to 37,743 for hooded jackets. Scan-imitation meshes are usually slightly lighter than simulated meshes, with the largest reductions appearing in skirt-8 and waistband-dress categories. Triangle aspect ratios remain close to 1.33--1.35 across categories, so they are discussed here rather than tabulated as a near-constant column. Non-manifold edges are zero at category mean level, while boundary edges remain nonzero because garment surfaces are open along hems, seams, and garment boundaries.
 
 \begin{table}[!htbp]
-\caption{Full production mesh-quality summary from simulated and scan-imitation meshes. AR denotes mean triangle aspect ratio.}\label{tab:meshquality}
+\caption{Full production mesh-quality summary from simulated and scan-imitation meshes. Low-variation aspect-ratio columns are omitted from the table and summarized in text.}\label{tab:meshquality}
 \centering
 \footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr}
 \toprule
-Category & \(N\) & Sim faces & Scan faces & Sim boundary & Scan boundary & Sim AR & Scan AR \\
+Category & \(N\) & Sim faces & Scan faces & Sim boundary & Scan boundary \\
 \midrule
-Pants straight sides & 1,000 & 11,992 & 11,134 & 147 & 341 & 1.341 & 1.342 \\
-Skirt 2 panels & 1,200 & 12,908 & 12,542 & 204 & 293 & 1.348 & 1.349 \\
-Skirt 4 panels & 1,600 & 15,140 & 13,854 & 259 & 612 & 1.342 & 1.342 \\
-Jumpsuit sleeveless & 2,000 & 16,673 & 16,072 & 222 & 569 & 1.338 & 1.338 \\
-Dress sleeveless & 2,550 & 17,887 & 17,309 & 278 & 471 & 1.341 & 1.341 \\
-Skirt 8 panels & 1,000 & 22,669 & 17,814 & 351 & 1,511 & 1.334 & 1.338 \\
-Tee sleeveless & 1,800 & 25,737 & 24,786 & 369 & 642 & 1.336 & 1.336 \\
-WB pants straight & 1,500 & 26,036 & 23,860 & 191 & 813 & 1.334 & 1.334 \\
-Jacket & 2,200 & 35,060 & 33,955 & 544 & 1,123 & 1.334 & 1.334 \\
-Tee & 2,300 & 35,166 & 34,051 & 399 & 733 & 1.335 & 1.335 \\
-WB dress sleeveless & 2,600 & 36,784 & 32,812 & 337 & 1,148 & 1.335 & 1.337 \\
-Jacket hood & 2,700 & 37,743 & 35,685 & 548 & 1,083 & 1.335 & 1.335 \\
+Pants straight sides & 1,000 & 11,992 & 11,134 & 147 & 341 \\
+Skirt 2 panels & 1,200 & 12,908 & 12,542 & 204 & 293 \\
+Skirt 4 panels & 1,600 & 15,140 & 13,854 & 259 & 612 \\
+Jumpsuit sleeveless & 2,000 & 16,673 & 16,072 & 222 & 569 \\
+Dress sleeveless & 2,550 & 17,887 & 17,309 & 278 & 471 \\
+Skirt 8 panels & 1,000 & 22,669 & 17,814 & 351 & 1,511 \\
+Tee sleeveless & 1,800 & 25,737 & 24,786 & 369 & 642 \\
+WB pants straight & 1,500 & 26,036 & 23,860 & 191 & 813 \\
+Jacket & 2,200 & 35,060 & 33,955 & 544 & 1,123 \\
+Tee & 2,300 & 35,166 & 34,051 & 399 & 733 \\
+WB dress sleeveless & 2,600 & 36,784 & 32,812 & 337 & 1,148 \\
+Jacket hood & 2,700 & 37,743 & 35,685 & 548 & 1,083 \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -299,14 +299,7 @@ The pattern-graph benchmark confirms that the corpus contains a structured compl
 
 \subsubsection{Pattern-Mesh Consistency}
 
-The proposed consistency score is intentionally strict: it requires pattern panels, stitch rules, simulated and scan meshes, zero non-manifold edges, sufficient segmentation labels, and agreement between segmentation length and mesh vertices. Despite this, 22,448 of 22,450 production samples receive a perfect score of 100. The remaining two samples fall below 70 because required mesh and segmentation evidence is absent. The mean production consistency score is 99.996. This result is important for downstream reconstruction work: most samples can be used directly, and the few failures can be isolated deterministically rather than discovered during model training.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig_consistency_histogram.png}
-\caption{Pattern-mesh consistency distribution over 22,450 production samples. The score detects two low-consistency samples while 22,448 samples satisfy all implemented consistency checks.}
-\label{fig:consistency}
-\end{figure}
+The proposed consistency score is intentionally strict: it requires pattern panels, stitch rules, simulated and scan meshes, zero non-manifold edges, sufficient segmentation labels, and agreement between segmentation length and mesh vertices. Despite this, 22,448 of 22,450 production samples receive a perfect score of 100. The remaining two samples fall below 70 because required mesh and segmentation evidence is absent. The mean production consistency score is 99.996. Because this distribution is almost degenerate, the histogram is omitted and the result is reported in text instead. This result is important for downstream reconstruction work: most samples can be used directly, and the few failures can be isolated deterministically rather than discovered during model training.
 
 \begin{figure}[!htbp]
 \centering
@@ -324,19 +317,19 @@ Table~\ref{tab:retrieval} reports retrieval-style reconstruction baselines on th
 The reconstruction interpretation is deliberately simple: the nearest training sample supplies the predicted pattern structure for a test query. Under this baseline, mesh-only retrieval has a panel-count MAE of 0.664 and a stitch-count MAE of 1.426. Segmentation-only retrieval nearly eliminates panel error but retains a small stitch-count error. Combined retrieval reduces panel and stitch MAE to below 0.002, with the remaining error caused by one anomalous nearest-neighbor match. These results establish a strong but transparent baseline for later learned image-to-pattern or mesh-to-pattern reconstruction.
 
 \begin{table}[!htbp]
-\caption{Retrieval and reconstruction baselines on the stratified test split. MAE is computed between the retrieved training pattern and the ground-truth test pattern.}\label{tab:retrieval}
+\caption{Retrieval and reconstruction baselines on the 3,368-sample stratified test split. MAE is computed between the retrieved training pattern and the ground-truth test pattern.}\label{tab:retrieval}
 \centering
 \footnotesize
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lrrrrr}
 \toprule
-Baseline & Features & Test \(N\) & Top-1 & Top-5 & MRR & Panel/Stitch MAE \\
+Baseline & Features & Top-1 & Top-5 & MRR & Panel/Stitch MAE \\
 \midrule
-Random category & 0 & 3,368 & 0.0814 & 0.4167 & 0.0000 & 0.000/0.000 \\
-Majority category & 0 & 3,368 & 0.1202 & 0.5502 & 0.0000 & 0.000/0.000 \\
-NN pattern & 9 & 3,368 & 1.0000 & 1.0000 & 1.0000 & 0.000/0.000 \\
-NN mesh & 14 & 3,368 & 0.7732 & 0.9543 & 0.8504 & 0.664/1.426 \\
-NN segmentation & 8 & 3,368 & 0.8812 & 0.9774 & 0.9235 & 0.005/0.101 \\
-NN combined & 31 & 3,368 & 0.9997 & 0.9997 & 0.9997 & 0.001/0.002 \\
+Random category & 0 & 0.0814 & 0.4167 & 0.0000 & 0.000/0.000 \\
+Majority category & 0 & 0.1202 & 0.5502 & 0.0000 & 0.000/0.000 \\
+NN pattern & 9 & 1.0000 & 1.0000 & 1.0000 & 0.000/0.000 \\
+NN mesh & 14 & 0.7732 & 0.9543 & 0.8504 & 0.664/1.426 \\
+NN segmentation & 8 & 0.8812 & 0.9774 & 0.9235 & 0.005/0.101 \\
+NN combined & 31 & 0.9997 & 0.9997 & 0.9997 & 0.001/0.002 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -357,31 +350,9 @@ NN combined & 31 & 3,368 & 0.9997 & 0.9997 & 0.9997 & 0.001/0.002 \\
 
 \subsubsection{Render-to-Pattern Retrieval Baseline}
 
-Table~\ref{tab:renderretrieval} reports deterministic render-image retrieval on the same split. Front-view descriptors alone achieve 99.73\% top-1 accuracy and 99.97\% top-5 accuracy. Back-view descriptors perform similarly. The paired front-back descriptor reaches 99.70\% top-1 accuracy and 99.97\% top-5 accuracy. Panel and stitch errors are near zero because nearest rendered neighbors almost always come from the correct category and template family.
+Deterministic render-image retrieval is evaluated on the same split. Front-view descriptors alone achieve 99.73\% top-1 accuracy and 99.97\% top-5 accuracy. Back-view descriptors perform similarly, and the paired front-back descriptor reaches 99.70\% top-1 accuracy and 99.97\% top-5 accuracy. The three render settings are therefore not shown as a separate table or bar chart because their values are visually almost identical. Panel and stitch errors are near zero because nearest rendered neighbors almost always come from the correct category and template family.
 
 This result has two interpretations. First, the dataset is highly suitable for controlled render-to-pattern retrieval experiments because rendered appearance, category, and pattern structure are strongly coupled. Second, the result reveals an important benchmark caveat: high retrieval accuracy from deterministic image descriptors can reflect template and rendering regularity, not necessarily deep understanding of garment construction. Future image-to-pattern models should therefore compare against this simple render baseline and should report cross-template or cross-style splits when claiming generalization beyond the dataset's template families.
-
-\begin{table}[!htbp]
-\caption{Render-image nearest-neighbor retrieval baselines on the same stratified test split.}\label{tab:renderretrieval}
-\centering
-\footnotesize
-\begin{tabular}{lrrrrrr}
-\toprule
-Baseline & Features & Test \(N\) & Top-1 & Top-5 & MRR & Panel/Stitch MAE \\
-\midrule
-NN front render & 375 & 3,368 & 0.9973 & 0.9997 & 0.9985 & 0.006/0.009 \\
-NN back render & 375 & 3,368 & 0.9973 & 0.9994 & 0.9983 & 0.006/0.010 \\
-NN front+back render & 1,125 & 3,368 & 0.9970 & 0.9997 & 0.9983 & 0.005/0.011 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig_image_retrieval_baselines.png}
-\caption{Render-image retrieval baseline performance. Simple deterministic image descriptors are already strong on the category-level retrieval task, indicating that rendered appearance and pattern-template identity are tightly coupled in this corpus.}
-\label{fig:renderbaseline}
-\end{figure}
 
 \begin{figure}[!htbp]
 \centering
@@ -528,29 +499,29 @@ Total & 15,715 & 3,367 & 3,368 & 22,450 \\
 
 \subsubsection{Per-Category Retrieval Diagnostics}\label{sec:percat}
 
-Table~\ref{tab:percategory} reports category-level top-1 retrieval accuracy for mesh-only, segmentation-only, and combined nearest-neighbor baselines. Mesh-only retrieval is strong for pants and waistband variants but substantially weaker for jackets, hooded jackets, tees, and sleeveless tees, where geometry statistics alone confuse related upper-body garments. Segmentation features improve jacket and hooded-jacket separation but are weaker on some skirt and dress variants. The combined feature set is nearly perfect, with a single observed category error in the tee category.
+Table~\ref{tab:percategory} reports category-level top-1 retrieval accuracy for mesh-only and segmentation-only nearest-neighbor baselines. Mesh-only retrieval is strong for pants and waistband variants but substantially weaker for jackets, hooded jackets, tees, and sleeveless tees, where geometry statistics alone confuse related upper-body garments. Segmentation features improve jacket and hooded-jacket separation but are weaker on some skirt and dress variants. The combined feature set is not tabulated here because it is nearly constant across categories, with only one observed category error in the tee category.
 
 \begin{table}[!htbp]
-\caption{Per-category top-1 retrieval accuracy for feature-based nearest-neighbor baselines.}\label{tab:percategory}
+\caption{Per-category top-1 retrieval accuracy for mesh-only and segmentation-only nearest-neighbor baselines. The near-constant combined-feature column is omitted.}\label{tab:percategory}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr}
 \toprule
-Category & Test \(N\) & Mesh & Segmentation & Combined \\
+Category & Test \(N\) & Mesh & Segmentation \\
 \midrule
-Dress sleeveless & 383 & 0.935 & 0.794 & 1.000 \\
-Jacket & 330 & 0.500 & 1.000 & 1.000 \\
-Jacket hood & 405 & 0.511 & 0.983 & 1.000 \\
-Jumpsuit sleeveless & 300 & 0.937 & 1.000 & 1.000 \\
-Pants straight sides & 150 & 1.000 & 1.000 & 1.000 \\
-Skirt 2 panels & 180 & 0.867 & 0.794 & 1.000 \\
-Skirt 4 panels & 240 & 0.871 & 0.692 & 1.000 \\
-Skirt 8 panels & 150 & 0.800 & 0.933 & 1.000 \\
-Tee & 345 & 0.588 & 0.843 & 0.997 \\
-Tee sleeveless & 270 & 0.596 & 0.804 & 1.000 \\
-WB dress sleeveless & 390 & 0.951 & 0.823 & 1.000 \\
-WB pants straight & 225 & 0.991 & 0.924 & 1.000 \\
+Dress sleeveless & 383 & 0.935 & 0.794 \\
+Jacket & 330 & 0.500 & 1.000 \\
+Jacket hood & 405 & 0.511 & 0.983 \\
+Jumpsuit sleeveless & 300 & 0.937 & 1.000 \\
+Pants straight sides & 150 & 1.000 & 1.000 \\
+Skirt 2 panels & 180 & 0.867 & 0.794 \\
+Skirt 4 panels & 240 & 0.871 & 0.692 \\
+Skirt 8 panels & 150 & 0.800 & 0.933 \\
+Tee & 345 & 0.588 & 0.843 \\
+Tee sleeveless & 270 & 0.596 & 0.804 \\
+WB dress sleeveless & 390 & 0.951 & 0.823 \\
+WB pants straight & 225 & 0.991 & 0.924 \\
 \bottomrule
 \end{tabular*}
 \end{table}
