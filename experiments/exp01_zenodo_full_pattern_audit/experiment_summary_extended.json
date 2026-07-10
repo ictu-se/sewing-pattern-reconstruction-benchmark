@@ -1,0 +1,17 @@
+{
+  "samples": 22457,
+  "categories_including_test": 13,
+  "production_categories": 12,
+  "complete_samples": 22452,
+  "missing_samples": 5,
+  "archives_verified": 14,
+  "missing_by_field": {
+    "has_front": 5,
+    "has_back": 2,
+    "has_sim_obj": 2,
+    "has_scan_obj": 2,
+    "has_sim_seg": 2,
+    "has_scan_seg": 2
+  },
+  "complete_rate": 0.9997773522732333
+}

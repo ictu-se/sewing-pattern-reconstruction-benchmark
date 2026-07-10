@@ -1,0 +1,15 @@
+{
+  "seed": 20260710,
+  "samples": 22450,
+  "render_samples": 22450,
+  "protocols": [
+    "leave_one_category_out",
+    "paired_transfer",
+    "render_noise_stress"
+  ],
+  "leave_one_category_out_rows": 24,
+  "paired_transfer_rows": 12,
+  "noise_stress_rows": 5,
+  "render_noise_top1_clean": 0.9970308788598575,
+  "render_noise_top1_sigma_035": 0.11995249406175772
+}

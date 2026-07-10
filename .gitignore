@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Raw data and generated caches
+raw/
+*.npz
+*.npy
+*.zip
+
+# Logs and process state
+*.log
+*.pid
+*.tmp
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+
+# OS/editor files
+.DS_Store
+Thumbs.db

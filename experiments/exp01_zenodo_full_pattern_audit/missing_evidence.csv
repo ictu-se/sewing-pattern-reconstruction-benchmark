@@ -1,0 +1,6 @@
+category,sample_id,completeness,missing
+dress_sleeveless_2550,dress_sleeveless_2H2KKTGM5E,88.888889,has_front
+dress_sleeveless_2550,dress_sleeveless_2KEHC64DC5,88.888889,has_front
+dress_sleeveless_2550,dress_sleeveless_WYW61XLHSZ,33.333333,has_front;has_back;has_sim_obj;has_scan_obj;has_sim_seg;has_scan_seg
+jumpsuit_sleeveless_2000,jumpsuit_sleeveless_013H78IH9F,33.333333,has_front;has_back;has_sim_obj;has_scan_obj;has_sim_seg;has_scan_seg
+skirt_8_panels_1000,skirt_8_panels_ITMBG9H2JM,88.888889,has_front

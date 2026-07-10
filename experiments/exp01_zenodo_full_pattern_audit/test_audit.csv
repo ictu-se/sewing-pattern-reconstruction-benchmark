@@ -1,0 +1,8 @@
+category,sample_id,completeness,has_front,has_back,has_pattern_png,has_pattern_svg,has_sim_obj,has_scan_obj,has_sim_seg,has_scan_seg,has_spec,panel_count,pattern_edge_count,stitch_count,svg_path_count,sim_vertices,sim_faces,sim_lines,scan_vertices,scan_faces,scan_lines
+test,dress_150,100.0,1,1,1,1,1,1,1,1,1,8,45,18,8,8345,16447,0,9683,19035,0
+test,jacket_hood_sleeveless_150,100.0,1,1,1,1,1,1,1,1,1,5,31,10,5,8344,16261,0,6940,13368,0
+test,jacket_sleeveless_150,100.0,1,1,1,1,1,1,1,1,1,3,20,4,3,10379,20374,0,17912,32489,0
+test,jumpsuit_150,100.0,1,1,1,1,1,1,1,1,1,10,55,22,10,11415,22553,0,15148,29397,0
+test,skirt_waistband_150,100.0,1,1,1,1,1,1,1,1,1,4,16,6,4,10621,20958,0,22395,40021,0
+test,tee_hood_150,100.0,1,1,1,1,1,1,1,1,1,8,44,18,8,22551,44616,0,23322,45630,0
+test,wb_jumpsuit_sleeveless_150,100.0,1,1,1,1,1,1,1,1,1,8,47,18,8,10902,21508,0,11563,22106,0

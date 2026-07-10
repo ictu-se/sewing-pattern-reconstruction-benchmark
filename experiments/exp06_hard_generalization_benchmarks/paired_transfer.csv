@@ -1,0 +1,13 @@
+protocol,feature_set,source_category,target_category,train_samples,test_samples,family_hit,panel_exact,stitch_exact,panel_mae,stitch_mae
+paired_transfer,structured,dress_sleeveless_2550,wb_dress_sleeveless_2600,2550,2600,1.0,0.0,0.0,2.0,2.0
+paired_transfer,structured,pants_straight_sides_1000,wb_pants_straight_1500,1000,1500,1.0,0.0,0.0,2.0,6.0
+paired_transfer,structured,jacket_2200,jacket_hood_2700,2200,2700,1.0,0.0,0.0,2.0,6.0
+paired_transfer,structured,tee_2300,tee_sleeveless_1800,2300,1800,1.0,0.0,0.0,4.0,8.0
+paired_transfer,structured,skirt_2_panels_1200,skirt_4_panels_1600,1200,1600,1.0,0.0,0.0,2.0,4.0
+paired_transfer,structured,skirt_4_panels_1600,skirt_8_panels_1000,1600,1000,1.0,0.0,0.0,4.0,8.0
+paired_transfer,render_pair,dress_sleeveless_2550,wb_dress_sleeveless_2600,2550,2600,1.0,0.0,0.0,2.0,2.0
+paired_transfer,render_pair,pants_straight_sides_1000,wb_pants_straight_1500,1000,1500,1.0,0.0,0.0,2.0,6.0
+paired_transfer,render_pair,jacket_2200,jacket_hood_2700,2200,2700,1.0,0.0,0.0,2.0,6.0
+paired_transfer,render_pair,tee_2300,tee_sleeveless_1800,2300,1800,1.0,0.0,0.0,4.0,8.0
+paired_transfer,render_pair,skirt_2_panels_1200,skirt_4_panels_1600,1200,1600,1.0,0.0,0.0,2.0,4.0
+paired_transfer,render_pair,skirt_4_panels_1600,skirt_8_panels_1000,1600,1000,1.0,0.0,0.0,4.0,8.0

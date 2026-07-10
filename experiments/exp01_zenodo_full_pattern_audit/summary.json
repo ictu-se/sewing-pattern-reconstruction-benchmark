@@ -1,0 +1,136 @@
+{
+  "total_samples": 22457,
+  "categories": {
+    "dress_sleeveless_2550": {
+      "samples": 2550,
+      "avg_completeness": 99.96514161215686,
+      "avg_panels": 4.0,
+      "avg_pattern_edges": 29.0,
+      "avg_stitches": 10.0,
+      "avg_svg_paths": 4.0,
+      "avg_sim_vertices": 9083.80659081993,
+      "avg_sim_faces": 17893.75323656336
+    },
+    "jacket_2200": {
+      "samples": 2200,
+      "avg_completeness": 100.0,
+      "avg_panels": 7.0,
+      "avg_pattern_edges": 36.0,
+      "avg_stitches": 12.0,
+      "avg_svg_paths": 7.0,
+      "avg_sim_vertices": 17801.10318181818,
+      "avg_sim_faces": 35060.255
+    },
+    "jacket_hood_2700": {
+      "samples": 2700,
+      "avg_completeness": 100.0,
+      "avg_panels": 9.0,
+      "avg_pattern_edges": 47.0,
+      "avg_stitches": 18.0,
+      "avg_svg_paths": 9.0,
+      "avg_sim_vertices": 19144.71185185185,
+      "avg_sim_faces": 37743.23296296296
+    },
+    "jumpsuit_sleeveless_2000": {
+      "samples": 2000,
+      "avg_completeness": 99.9666666665,
+      "avg_panels": 6.0,
+      "avg_pattern_edges": 39.0,
+      "avg_stitches": 14.0,
+      "avg_svg_paths": 6.0,
+      "avg_sim_vertices": 8448.80740370185,
+      "avg_sim_faces": 16681.572286143073
+    },
+    "pants_straight_sides_1000": {
+      "samples": 1000,
+      "avg_completeness": 100.0,
+      "avg_panels": 4.0,
+      "avg_pattern_edges": 20.0,
+      "avg_stitches": 6.0,
+      "avg_svg_paths": 4.0,
+      "avg_sim_vertices": 6068.249,
+      "avg_sim_faces": 11991.834
+    },
+    "skirt_2_panels_1200": {
+      "samples": 1200,
+      "avg_completeness": 100.0,
+      "avg_panels": 2.0,
+      "avg_pattern_edges": 12.0,
+      "avg_stitches": 4.0,
+      "avg_svg_paths": 2.0,
+      "avg_sim_vertices": 6555.855833333333,
+      "avg_sim_faces": 12908.101666666667
+    },
+    "skirt_4_panels_1600": {
+      "samples": 1600,
+      "avg_completeness": 100.0,
+      "avg_panels": 4.0,
+      "avg_pattern_edges": 24.0,
+      "avg_stitches": 8.0,
+      "avg_svg_paths": 4.0,
+      "avg_sim_vertices": 7699.3175,
+      "avg_sim_faces": 15140.004375
+    },
+    "skirt_8_panels_1000": {
+      "samples": 1000,
+      "avg_completeness": 99.988888889,
+      "avg_panels": 8.0,
+      "avg_pattern_edges": 48.0,
+      "avg_stitches": 16.0,
+      "avg_svg_paths": 8.0,
+      "avg_sim_vertices": 11510.035,
+      "avg_sim_faces": 22668.87
+    },
+    "tee_2300": {
+      "samples": 2300,
+      "avg_completeness": 100.0,
+      "avg_panels": 6.0,
+      "avg_pattern_edges": 33.0,
+      "avg_stitches": 12.0,
+      "avg_svg_paths": 6.0,
+      "avg_sim_vertices": 17780.904782608697,
+      "avg_sim_faces": 35166.467391304344
+    },
+    "tee_sleeveless_1800": {
+      "samples": 1800,
+      "avg_completeness": 100.0,
+      "avg_panels": 2.0,
+      "avg_pattern_edges": 17.0,
+      "avg_stitches": 4.0,
+      "avg_svg_paths": 2.0,
+      "avg_sim_vertices": 13051.194444444445,
+      "avg_sim_faces": 25737.418333333335
+    },
+    "test": {
+      "samples": 7,
+      "avg_completeness": 100.0,
+      "avg_panels": 6.571428571428571,
+      "avg_pattern_edges": 36.857142857142854,
+      "avg_stitches": 13.714285714285714,
+      "avg_svg_paths": 6.571428571428571,
+      "avg_sim_vertices": 11793.857142857143,
+      "avg_sim_faces": 23245.285714285714
+    },
+    "wb_dress_sleeveless_2600": {
+      "samples": 2600,
+      "avg_completeness": 100.0,
+      "avg_panels": 6.0,
+      "avg_pattern_edges": 33.0,
+      "avg_stitches": 12.0,
+      "avg_svg_paths": 6.0,
+      "avg_sim_vertices": 18558.543076923077,
+      "avg_sim_faces": 36784.48423076923
+    },
+    "wb_pants_straight_1500": {
+      "samples": 1500,
+      "avg_completeness": 100.0,
+      "avg_panels": 6.0,
+      "avg_pattern_edges": 30.0,
+      "avg_stitches": 12.0,
+      "avg_svg_paths": 6.0,
+      "avg_sim_vertices": 13112.690666666667,
+      "avg_sim_faces": 26036.002666666667
+    }
+  },
+  "generated_at": "2026-07-01 13:05:55"
+}

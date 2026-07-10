@@ -1,0 +1,7 @@
+{
+  "seed": 20260701,
+  "train": 15715,
+  "test": 3368,
+  "baselines": 6,
+  "best_top1": 1.0
+}

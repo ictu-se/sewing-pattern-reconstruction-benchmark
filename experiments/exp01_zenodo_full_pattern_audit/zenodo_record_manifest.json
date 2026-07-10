@@ -1,0 +1,255 @@
+{
+  "created": "2021-09-11T16:11:17.120716+00:00",
+  "modified": "2024-07-18T18:32:12.857384+00:00",
+  "id": 5267549,
+  "conceptrecid": "5267548",
+  "doi": "10.5281/zenodo.5267549",
+  "conceptdoi": "10.5281/zenodo.5267548",
+  "doi_url": "https://doi.org/10.5281/zenodo.5267549",
+  "metadata": {
+    "title": "Dataset of 3D Garments with Sewing Patterns",
+    "doi": "10.5281/zenodo.5267549",
+    "publication_date": "2021-06-08",
+    "description": "<p>The Dataset of 3D Garments with Sewing patterns contains more than 23500&nbsp;3D garment models with their corresponding sewing patterns, each representing unique garment design. The upload is organized by type for the 12 garment types of the train group, and the <a href=\"https://zenodo.org/api/files/82d24e49-a652-46d2-9d9f-7197ec4addc5/test.zip?versionId=caf48bdc-cf01-444d-a05f-74942a7483b5\">test.zip</a> contains garments of 9 types from the test group.&nbsp;<br>\n<br>\nThe detailed documentation of the dataset is provided in the accompanying&nbsp;<a href=\"https://zenodo.org/api/files/82d24e49-a652-46d2-9d9f-7197ec4addc5/Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf?versionId=c27d0083-335f-4c0f-9c15-cc84361c1677\">Datasheet</a>.<br>\n<br>\nGarment samples are obtained using the Garment Pattern Generator (available on&nbsp;<a href=\"https://github.com/maria-korosteleva/Garment-Pattern-Generator\">GitHub</a>) as presented in the paper&nbsp;<a href=\"https://openreview.net/forum?id=Pq8FBz0gZHY\">Generating Datasets of 3D Garments with Sewing Patterns&nbsp;</a>(<em><strong>NeurIPS 2021 Track on Datasets and Benchmarks</strong></em>)</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Korosteleva Maria",
+        "affiliation": "KAIST",
+        "orcid": "0000-0001-7151-0946"
+      },
+      {
+        "name": "Lee Sung-Hee",
+        "affiliation": "KAIST",
+        "orcid": "0000-0001-6604-4709"
+      }
+    ],
+    "keywords": [
+      "garments",
+      "sewing patterns",
+      "deep learning",
+      "neurips2021"
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/maria-korosteleva/Garment-Pattern-Generator",
+        "relation": "isDerivedFrom",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ],
+    "version": "1.0",
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "5267548"
+          }
+        }
+      ]
+    }
+  },
+  "title": "Dataset of 3D Garments with Sewing Patterns",
+  "links": {
+    "self": "https://zenodo.org/api/records/5267549",
+    "self_html": "https://zenodo.org/records/5267549",
+    "preview_html": "https://zenodo.org/records/5267549?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.5267549",
+    "self_doi": "https://doi.org/10.5281/zenodo.5267549",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.5267549",
+    "reserve_doi": "https://zenodo.org/api/records/5267549/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/5267548",
+    "parent_html": "https://zenodo.org/records/5267548",
+    "parent_doi": "https://doi.org/10.5281/zenodo.5267548",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.5267548",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:5267549/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:5267549/sequence/default",
+    "files": "https://zenodo.org/api/records/5267549/files",
+    "media_files": "https://zenodo.org/api/records/5267549/media-files",
+    "thumbnails": {
+      "10": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E10,/0/default.jpg",
+      "50": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E50,/0/default.jpg",
+      "100": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E100,/0/default.jpg",
+      "250": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E250,/0/default.jpg",
+      "750": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E750,/0/default.jpg",
+      "1200": "https://zenodo.org/api/iiif/record:5267549:Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/full/%5E1200,/0/default.jpg"
+    },
+    "archive": "https://zenodo.org/api/records/5267549/files-archive",
+    "archive_media": "https://zenodo.org/api/records/5267549/media-files-archive",
+    "latest": "https://zenodo.org/api/records/5267549/versions/latest",
+    "latest_html": "https://zenodo.org/records/5267549/latest",
+    "versions": "https://zenodo.org/api/records/5267549/versions",
+    "draft": "https://zenodo.org/api/records/5267549/draft",
+    "access_links": "https://zenodo.org/api/records/5267549/access/links",
+    "access_grants": "https://zenodo.org/api/records/5267549/access/grants",
+    "access_users": "https://zenodo.org/api/records/5267549/access/users",
+    "access_request": "https://zenodo.org/api/records/5267549/access/request",
+    "access": "https://zenodo.org/api/records/5267549/access",
+    "communities": "https://zenodo.org/api/records/5267549/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/5267549/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/5267549/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/5267549/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/5267549/quota-increase",
+    "requests": "https://zenodo.org/api/records/5267549/requests"
+  },
+  "updated": "2024-07-18T18:32:12.857384+00:00",
+  "recid": "5267549",
+  "revision": 8,
+  "files": [
+    {
+      "id": "18e731dc-2253-4b50-8028-332bc556c12f",
+      "key": "wb_dress_sleeveless_2600.zip",
+      "size": 11942936501,
+      "checksum": "md5:baef116f5a50bdeff4c61be1bbcaa91c",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/wb_dress_sleeveless_2600.zip/content"
+      }
+    },
+    {
+      "id": "c817e10c-312b-4eb3-993e-b7583d508287",
+      "key": "wb_pants_straight_1500.zip",
+      "size": 5412596476,
+      "checksum": "md5:bf4105bac9ab6e0b2857d4bad49e7476",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/wb_pants_straight_1500.zip/content"
+      }
+    },
+    {
+      "id": "68f466b7-89fb-42c3-bfb9-2d04a4de2759",
+      "key": "pants_straight_sides_1000.zip",
+      "size": 2119063448,
+      "checksum": "md5:2b4abc2451e66eb3904d1db8487a8330",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/pants_straight_sides_1000.zip/content"
+      }
+    },
+    {
+      "id": "586a83ee-942d-4ffb-8975-20fda8f48485",
+      "key": "jacket_2200.zip",
+      "size": 9896379061,
+      "checksum": "md5:3a4349e8287082e744c715b60318587c",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/jacket_2200.zip/content"
+      }
+    },
+    {
+      "id": "5a3f9e4d-ce0b-4cef-8806-9f738233c1a8",
+      "key": "jacket_hood_2700.zip",
+      "size": 12743075939,
+      "checksum": "md5:2d0c4708a3e8283c53c98bb2d21d9ca1",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/jacket_hood_2700.zip/content"
+      }
+    },
+    {
+      "id": "65e08932-fe74-4cb6-bffc-7575d4209a73",
+      "key": "dress_sleeveless_2550.zip",
+      "size": 7428764683,
+      "checksum": "md5:bb0db4908fcfa39bad92c926171e2c0f",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/dress_sleeveless_2550.zip/content"
+      }
+    },
+    {
+      "id": "0fa6c641-834c-4daa-8bf9-74693afe328e",
+      "key": "tee_2300.zip",
+      "size": 9131943874,
+      "checksum": "md5:13d67a3dd785ce8a53ef89a87a6d62af",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/tee_2300.zip/content"
+      }
+    },
+    {
+      "id": "4ce3502e-3ad1-43ed-a075-a284f426ac93",
+      "key": "skirt_8_panels_1000.zip",
+      "size": 3098514108,
+      "checksum": "md5:b173a382ef8f31e048893f81795c8f9a",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/skirt_8_panels_1000.zip/content"
+      }
+    },
+    {
+      "id": "90772a94-6d1d-4b5a-b511-2d019deae855",
+      "key": "skirt_4_panels_1600.zip",
+      "size": 3794363090,
+      "checksum": "md5:569c53caec21cf7ea9ea224a0f3ee3d7",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/skirt_4_panels_1600.zip/content"
+      }
+    },
+    {
+      "id": "d792b539-2a87-4868-ac7b-c964fbcded84",
+      "key": "jumpsuit_sleeveless_2000.zip",
+      "size": 5441568710,
+      "checksum": "md5:e973f13ea6d5d568c0c652b1a8883adc",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/jumpsuit_sleeveless_2000.zip/content"
+      }
+    },
+    {
+      "id": "e7ee99de-256c-4537-aecb-d692ca97f9ff",
+      "key": "Datasheet for Dataset of 3D Garments with Sewing Patterns v1..pdf",
+      "size": 157770,
+      "checksum": "md5:b4f6e93551fca8a70bfaec5e8f2f3860",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/Datasheet%20for%20Dataset%20of%203D%20Garments%20with%20Sewing%20Patterns%20v1..pdf/content"
+      }
+    },
+    {
+      "id": "70d2c707-081a-460e-9786-2b3a6be022e2",
+      "key": "skirt_2_panels_1200.zip",
+      "size": 3012737719,
+      "checksum": "md5:838218429001e7b1e9f1434faa3289d0",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/skirt_2_panels_1200.zip/content"
+      }
+    },
+    {
+      "id": "7687e105-8c68-44b7-b030-884bc48a52f4",
+      "key": "tee_sleeveless_1800.zip",
+      "size": 6739854254,
+      "checksum": "md5:c68993777df391d86606a3bbfbf7257a",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/tee_sleeveless_1800.zip/content"
+      }
+    },
+    {
+      "id": "151bf94e-b757-4655-ada6-d29be62e5ec8",
+      "key": "test.zip",
+      "size": 4006539672,
+      "checksum": "md5:74e85232fee02d74462a514eb1c76a2c",
+      "links": {
+        "self": "https://zenodo.org/api/records/5267549/files/test.zip/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "249956"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 88747,
+    "unique_downloads": 22801,
+    "views": 11910,
+    "unique_views": 10146,
+    "version_downloads": 88647,
+    "version_unique_downloads": 22739,
+    "version_unique_views": 10069,
+    "version_views": 11821
+  },
+  "state": "done",
+  "submitted": true
+}

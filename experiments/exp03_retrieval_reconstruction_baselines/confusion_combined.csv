@@ -1,0 +1,14 @@
+feature_set,true_category,pred_category,count
+combined,dress_sleeveless_2550,dress_sleeveless_2550,383
+combined,jacket_2200,jacket_2200,330
+combined,jacket_hood_2700,jacket_hood_2700,405
+combined,jumpsuit_sleeveless_2000,jumpsuit_sleeveless_2000,300
+combined,pants_straight_sides_1000,pants_straight_sides_1000,150
+combined,skirt_2_panels_1200,skirt_2_panels_1200,180
+combined,skirt_4_panels_1600,skirt_4_panels_1600,240
+combined,skirt_8_panels_1000,skirt_8_panels_1000,150
+combined,tee_2300,jacket_hood_2700,1
+combined,tee_2300,tee_2300,344
+combined,tee_sleeveless_1800,tee_sleeveless_1800,270
+combined,wb_dress_sleeveless_2600,wb_dress_sleeveless_2600,390
+combined,wb_pants_straight_1500,wb_pants_straight_1500,225
