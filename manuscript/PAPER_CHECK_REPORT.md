@@ -22,7 +22,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 
 | Check | Result | Status |
 |---|---:|---|
-| PDF pages | 29 | PASS |
+| PDF pages | 30 | PASS |
 | PDF page size | A4 | PASS |
 | Abstract length | 227 words | PASS |
 | Introduction length | 820 words | PASS |
@@ -39,6 +39,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 | DOI-bearing references | 11/11 | PASS |
 | URL fields in BibTeX | 0 | PASS |
 | Missing figure files | 0 | PASS |
+| Short paragraph candidates | 0 | PASS |
 | Appendix mentions | 0 | PASS |
 | Target-journal/editor traces | 0 | PASS |
 | TODO/FIXME/placeholder traces | 0 | PASS |
@@ -84,6 +85,7 @@ Visual review found no broken pages, missing figures, unresolved references, or 
 - Kept all extended diagnostics inside the main manuscript, with no appendix.
 - Rebuilt the PDF and regenerated the layout contact sheet after the structural changes.
 - Revised all figure/table placement controls so floats remain close to the relevant analysis text.
+- Expanded short diagnostic paragraphs so the manuscript no longer has paragraph-length candidates below the checker threshold.
 - Verified that references are fully cited and DOI-complete.
 - Verified that the manuscript has no journal-targeting or editor-targeting traces.
 

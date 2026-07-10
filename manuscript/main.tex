@@ -444,7 +444,7 @@ Render noise, \(\sigma=0.35\) & Render pair & 0.2283 & 0.2034 & 0.1948 & 2.649/4
 
 \section{Discussion}\label{sec:discussion}
 
-The full experiment supports the use of this corpus as a foundation for sewing-pattern reconstruction research. Unlike image-only clothing datasets such as DeepFashion3D, which are valuable for garment reconstruction but do not expose full sewing-pattern structure \cite{deepfashion3d}, the audited corpus pairs rendered views with editable pattern and stitch evidence. This makes it directly relevant to methods that infer or generate patterns, such as NeuralTailor, Neural Sewing Machines, Panelformer, SewFormer, Design2GarmentCode, and GarmentDiffusion \cite{neuraltailor2022,nsm2022,panelformer2024,sewformer2023,design2garmentcode2025,garmentdiffusion2025}.
+The full experiment supports the use of this corpus as a foundation for sewing-pattern reconstruction research. Unlike image-only clothing datasets such as DeepFashion3D, which are valuable for garment reconstruction but do not expose full sewing-pattern structure \cite{deepfashion3d}, the audited corpus pairs rendered views with editable pattern and stitch evidence. This makes it directly relevant to methods that infer or generate patterns, such as NeuralTailor, Neural Sewing Machines, Panelformer, SewFormer, Design2GarmentCode, and GarmentDiffusion \cite{neuraltailor2022,nsm2022,panelformer2024,sewformer2023,design2garmentcode2025,garmentdiffusion2025}. The comparison also clarifies why the present paper emphasizes data evidence and benchmark controls rather than a new neural architecture.
 
 The category spread also matters. A subset containing only pants and skirts can support basic mesh-pattern studies, but it cannot test the pattern complexity needed for sleeves, jackets, hoods, waistband garments, or multi-panel combinations. The full audit shows a natural difficulty ladder: two-panel skirts and sleeveless tees are structurally simple, while hooded jackets combine high panel count, high stitch count, and high mesh complexity. The full mesh-quality pass adds geometric evidence to this claim: categories differ not only in panel/stitch counts but also in simulated and scan-imitation face counts, boundary-edge structure, and segmentation coverage. This ladder can be used to design curriculum-style experiments for image-to-pattern retrieval or pattern-structure prediction.
 
@@ -452,13 +452,13 @@ The retrieval baselines clarify the difference between dataset usability and rec
 
 The render-image baseline further sharpens this point. Its 99.73\% top-1 result is useful but also diagnostic: the corpus uses controlled rendering, consistent body pose, category-specific colors, and template families. A simple descriptor can therefore retrieve the correct category without learning a general sewing-pattern reconstruction model. The hard-generalization tests confirm this interpretation. When exact category matches are removed or descriptor stability is perturbed, family transfer and panel/stitch transfer become much weaker. For benchmark design, this is not a flaw if stated explicitly. It means that render-to-pattern retrieval is an easy in-distribution task, whereas cross-template, cross-color, cross-body, or real-photo-to-pattern reconstruction would be substantially harder and should be evaluated separately.
 
-The proposed consistency score is not a replacement for downstream geometric metrics such as Chamfer distance, normal consistency, IoU, or simulation stability. Instead, it acts as a pre-training gate. A model trained on paired patterns and meshes can silently fail if segmentation files are misaligned with mesh vertices or if a small number of samples lack OBJ evidence. The full-data score shows that this dataset is unusually clean, but it also demonstrates why a reproducible evidence gate should precede model training.
+The proposed consistency score is not a replacement for downstream geometric metrics such as Chamfer distance, normal consistency, IoU, or simulation stability. Instead, it acts as a pre-training gate that asks whether the paired evidence is usable before any model-specific accuracy number is reported. A model trained on paired patterns and meshes can silently fail if segmentation files are misaligned with mesh vertices or if a small number of samples lack OBJ evidence. The full-data score shows that this dataset is unusually clean, but it also demonstrates why a reproducible evidence gate should precede model training.
 
 The experiment also clarifies how to extend pattern reconstruction to traditional garments. A traditional costume study should not begin from manually drawn figures alone. It should first define the same evidence model used here: paired rendered views, editable pattern files, stitch rules, mesh simulation evidence, and category-specific metadata. For garments such as the Vietnamese \textit{ao dai}, this means future work should build or acquire verified pattern-level samples before claiming reconstruction performance. The present full-data audit supplies the experimental protocol and baseline dataset structure for that extension.
 
 \subsection{Traditional Garment Transfer}
 
-The motivation for this study includes traditional costume modeling, but the current corpus should not be overclaimed as a traditional-garment dataset. Garments such as the Vietnamese \textit{ao dai} require long tunic panels, side slits, collar structures, sleeve variations, layered trousers, and motif alignment rules that are not fully represented by the existing template families. Table~\ref{tab:traditionalgap} and Fig.~\ref{fig:traditionalgap} summarize the transfer gap.
+The motivation for this study includes traditional costume modeling, but the current corpus should not be overclaimed as a traditional-garment dataset. Garments such as the Vietnamese \textit{ao dai} require long tunic panels, side slits, collar structures, sleeve variations, layered trousers, and motif alignment rules that are not fully represented by the existing template families. The comparison is therefore framed as a transfer analysis rather than as a claim of immediate cultural-garment coverage. Table~\ref{tab:traditionalgap} and Fig.~\ref{fig:traditionalgap} summarize the transfer gap.
 
 \begin{table}[!htbp]
 \caption{Traditional-garment transfer requirements and how the audited dataset can or cannot support them.}\label{tab:traditionalgap}
@@ -488,7 +488,7 @@ Cultural style labels & None & Missing & Expert-validated cultural taxonomy \\
 \label{fig:traditionalgap}
 \end{figure}
 
-Nevertheless, the benchmark provides a concrete protocol for building such a dataset. A traditional-garment extension should collect or generate the same evidence tuple $(I,P,S,M,A)$, verify file-level completeness, compute mesh and pattern-graph descriptors, and report retrieval or reconstruction baselines before introducing a new neural model. In this sense, the present work is a foundation study for traditional costume modeling rather than a direct solution to it.
+Nevertheless, the benchmark provides a concrete protocol for building such a dataset. A traditional-garment extension should collect or generate the same evidence tuple $(I,P,S,M,A)$, verify file-level completeness, compute mesh and pattern-graph descriptors, and report retrieval or reconstruction baselines before introducing a new neural model. This sequence would make the cultural extension auditable in the same way as the current full-data corpus. In this sense, the present work is a foundation study for traditional costume modeling rather than a direct solution to it.
 
 \subsection{Limitations}
 
@@ -498,7 +498,7 @@ This paper does not train a deep reconstruction network and does not claim state
 
 \subsubsection{Benchmark Split Details}\label{sec:splits}
 
-Table~\ref{tab:splits} gives the exact stratified split used by the retrieval and reconstruction baselines. The split is deterministic with a fixed random seed and preserves the category distribution of the full 22,450-sample production subset.
+Table~\ref{tab:splits} gives the exact stratified split used by the retrieval and reconstruction baselines. The split is deterministic with a fixed random seed and preserves the category distribution of the full 22,450-sample production subset. Reporting the split explicitly is important because small category shifts can change nearest-neighbor retrieval difficulty. The table also makes later comparisons easier, since future learned models can reuse the same train, validation, and test counts.
 
 \begin{table}[!htbp]
 \caption{Deterministic 70/15/15 category-stratified split used for retrieval and reconstruction baselines.}\label{tab:splits}
@@ -624,7 +624,7 @@ The render-image baseline uses deterministic descriptors rather than learned vis
 
 \subsubsection{Artifact Inventory}\label{sec:artifacts}
 
-Table~\ref{tab:artifacts} summarizes the concrete artifacts produced by the benchmark. The separation into experiment directories is intentional: the initial evidence audit, quantitative mesh-pattern benchmark, structured-feature retrieval, render-image retrieval, and manuscript-specific diagnostic figures can be rerun or inspected independently.
+Table~\ref{tab:artifacts} summarizes the concrete artifacts produced by the benchmark. The separation into experiment directories is intentional: the initial evidence audit, quantitative mesh-pattern benchmark, structured-feature retrieval, render-image retrieval, and manuscript-specific diagnostic figures can be rerun or inspected independently. This inventory also clarifies which outputs are raw measurements and which outputs are manuscript-level summaries. It therefore helps readers reproduce the paper without treating the PDF figures as the only available evidence.
 
 \begin{table}[!htbp]
 \caption{Experiment artifact inventory.}\label{tab:artifacts}
@@ -645,7 +645,7 @@ Extra manuscript figures & Code-generated render error gallery and traditional-g
 
 \subsubsection{Evaluation Protocol Card}\label{sec:protocol}
 
-The benchmark is intended to separate evidence quality from model ability. Table~\ref{tab:protocolcard} states the recommended interpretation of each metric group. This prevents a common error in garment reconstruction papers: treating high category retrieval accuracy as if it were already evidence of accurate sewing-pattern reconstruction.
+The benchmark is intended to separate evidence quality from model ability. Table~\ref{tab:protocolcard} states the recommended interpretation of each metric group. This distinction matters because several metrics are necessary preconditions for reconstruction, not final reconstruction scores. The protocol card prevents a common error in garment reconstruction papers: treating high category retrieval accuracy as if it were already evidence of accurate sewing-pattern reconstruction.
 
 \begin{table}[!htbp]
 \caption{Recommended interpretation of benchmark metric groups.}\label{tab:protocolcard}
@@ -670,7 +670,7 @@ For future learned models, we recommend reporting at least four settings: image-
 
 \subsubsection{Traditional-Garment Dataset Schema}\label{sec:traditionalschema}
 
-Table~\ref{tab:traditionalschema} gives a minimum schema for extending the benchmark toward traditional garments. The schema is phrased generically, but it is motivated by garments such as the Vietnamese \textit{ao dai}, where silhouette, side openings, collar construction, trouser pairing, and motif placement are culturally meaningful rather than cosmetic metadata.
+Table~\ref{tab:traditionalschema} gives a minimum schema for extending the benchmark toward traditional garments. The schema is phrased generically, but it is motivated by garments such as the Vietnamese \textit{ao dai}, where silhouette, side openings, collar construction, trouser pairing, and motif placement are culturally meaningful rather than cosmetic metadata. The goal is to define what must be measured before a reconstruction model is trained. Without such fields, a dataset may support visual similarity while still missing construction and cultural validity.
 
 \begin{table}[!htbp]
 \caption{Minimum schema for a traditional-garment pattern-reconstruction dataset.}\label{tab:traditionalschema}
@@ -699,7 +699,7 @@ Evaluation splits & Category-stratified and style-stratified splits, plus cross-
 \label{fig:traditionalschema}
 \end{figure}
 
-This schema is intentionally stricter than what is needed for generic garment retrieval. Traditional costume modeling risks producing visually plausible but culturally incorrect assets if side slits, collars, layered trousers, textile motifs, and expert labels are absent. The current benchmark therefore supplies the measurement protocol, while a traditional-garment corpus must supply the missing cultural and construction evidence.
+This schema is intentionally stricter than what is needed for generic garment retrieval. Traditional costume modeling risks producing visually plausible but culturally incorrect assets if side slits, collars, layered trousers, textile motifs, and expert labels are absent. The additional fields also support more meaningful generalization tests, such as cross-style, cross-region, or motif-transfer splits. The current benchmark therefore supplies the measurement protocol, while a traditional-garment corpus must supply the missing cultural and construction evidence.
 
 \section{Conclusion}\label{sec:conclusion}
 
