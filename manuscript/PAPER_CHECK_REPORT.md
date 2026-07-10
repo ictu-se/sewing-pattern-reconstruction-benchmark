@@ -22,7 +22,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 
 | Check | Result | Status |
 |---|---:|---|
-| PDF pages | 31 | PASS |
+| PDF pages | 29 | PASS |
 | PDF page size | A4 | PASS |
 | Abstract length | 227 words | PASS |
 | Introduction length | 820 words | PASS |
@@ -75,7 +75,7 @@ The final PDF was rendered into page screenshots and combined into:
 layout_review/contact_sheet.png
 ```
 
-Visual review found no broken pages, missing figures, unresolved references, or obvious text overflow. The last diagnostic pages are still table/figure-heavy and slightly airy in places, but this is acceptable because the extended diagnostics were intentionally integrated into the main text instead of being moved to an appendix.
+Visual review found no broken pages, missing figures, unresolved references, or obvious text overflow. Float placement was revised so that figures and tables stay near the paragraphs that analyze them. All manuscript floats now use flexible `!htbp` placement, and `placeins` section barriers prevent figures or tables from drifting into unrelated sections. The final contact sheet shows the main Results figures/tables on pages 7--19, the traditional-garment transfer material on pages 21--22, and the reproducibility diagnostics on pages 23--28.
 
 ## Fixes made while running the checker
 
@@ -83,6 +83,7 @@ Visual review found no broken pages, missing figures, unresolved references, or 
 - Reduced top-level subsection counts by demoting detailed method/result/diagnostic headings to `\subsubsection`.
 - Kept all extended diagnostics inside the main manuscript, with no appendix.
 - Rebuilt the PDF and regenerated the layout contact sheet after the structural changes.
+- Revised all figure/table placement controls so floats remain close to the relevant analysis text.
 - Verified that references are fully cited and DOI-complete.
 - Verified that the manuscript has no journal-targeting or editor-targeting traces.
 
