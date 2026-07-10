@@ -1,6 +1,6 @@
 # Sewing Pattern Reconstruction Benchmark
 
-This repository contains the reproducible code, experiment artifacts, and manuscript source for a full-data sewing-pattern reconstruction benchmark on the Dataset of 3D Garments with Sewing Patterns.
+This repository contains the reproducible code and experiment artifacts for a full-data sewing-pattern reconstruction benchmark on the Dataset of 3D Garments with Sewing Patterns.
 
 The benchmark audits 22,457 structured garment samples directly from the verified Zenodo archives, computes pattern, mesh, segmentation, and consistency metrics for the 22,450-sample production subset, and evaluates deterministic retrieval-style reconstruction baselines. It also includes hard-generalization protocols for leave-one-category-out transfer, paired template transfer, and render descriptor noise stress testing.
 
@@ -8,7 +8,6 @@ The benchmark audits 22,457 structured garment samples directly from the verifie
 
 - `scripts/`: Python scripts for downloading/verifying Zenodo archives, auditing evidence, computing quantitative metrics, running retrieval baselines, generating figures, and running hard-generalization experiments.
 - `experiments/`: Inspectable experiment outputs, summaries, tables, reports, and generated figures.
-- `manuscript/`: LaTeX manuscript source, bibliography, Springer Nature class/style files, manuscript figures, and the current compiled PDF.
 
 ## Data
 
@@ -46,17 +45,6 @@ python scripts/run_hard_generalization_benchmarks.py
 ```
 
 The render-image baseline requires the raw Zenodo archives. Structured-feature retrieval can be rerun after the quantitative benchmark tables have been generated.
-
-## Manuscript Build
-
-Compile the manuscript from `manuscript/`:
-
-```bash
-pdflatex -interaction=nonstopmode main.tex
-bibtex main
-pdflatex -interaction=nonstopmode main.tex
-pdflatex -interaction=nonstopmode main.tex
-```
 
 ## Notes
 
