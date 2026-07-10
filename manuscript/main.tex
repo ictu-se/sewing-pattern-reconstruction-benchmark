@@ -55,13 +55,15 @@ The contributions are:
 
 \section{Methods}\label{sec:methods}
 
-\subsection{Dataset and Scope}
+\subsection{Dataset, Evidence, and Audit Protocol}
+
+\subsubsection{Dataset and Scope}
 
 The experiment uses the public Dataset of 3D Garments with Sewing Patterns \cite{korosteleva2021dataset}. The Zenodo record contains 14 files: 13 zip archives and one datasheet PDF. All files were downloaded using resumable transfer and verified against the MD5 checksums provided by the Zenodo API. The verified compressed corpus size is 84,768,495,305 bytes. Two archives had already been used in a prior experiment and were reused through verified hardlinks; all remaining archives were downloaded and verified in the same pipeline.
 
 The audit covers 22,457 samples. Of these, 22,450 belong to 12 production garment categories and 7 belong to the official \texttt{test.zip} archive. Production categories include pants, skirts, sleeveless tees, tees, sleeveless dresses, waistband dresses, waistband pants, jumpsuits, jackets, and hooded jackets. The official test samples are retained in the full audit count but excluded from category-comparison interpretation unless explicitly stated.
 
-\subsection{Evidence Model}
+\subsubsection{Evidence Model}
 
 Each garment sample is represented as
 \begin{equation}
@@ -79,15 +81,17 @@ C_i=\frac{100}{|E|}\sum_{e\in E}\mathbb{1}(e\in G_i).
 \end{equation}
 The audit further extracts panel count, pattern-edge count, stitch count, SVG path count, simulated mesh vertices and faces, and scan-imitation mesh vertices and faces.
 
-\subsection{Archive-Level Audit}
+\subsubsection{Archive-Level Audit}
 
 The audit reads samples directly inside compressed archives. This design avoids expanding the full 84.77 GB compressed corpus into a much larger working directory and makes the experiment easier to resume. For each archive, the pipeline enumerates sample folders, checks required evidence entries, parses the garment specification, counts vector pattern elements, and scans mesh files for vertex and face records. The output records one structured measurement row per sample and a separate category-level summary, enabling both full-corpus statistics and per-category diagnostics.
 
-\subsection{Visual Evidence Generation}
+\subsubsection{Visual Evidence Generation}
 
 Two manuscript figures are generated from the full audit outputs. The first selects four representative complete samples per production category using mesh-complexity quantiles and composes render-pattern evidence from the verified archive images. The second summarizes mean simulated mesh complexity together with mean panel and stitch counts for each production category. Both figures are generated from the same verified data used by the quantitative benchmark.
 
-\subsection{Mesh Quality and Pattern-Graph Metrics}
+\subsection{Metrics and Consistency}
+
+\subsubsection{Mesh Quality and Pattern-Graph Metrics}
 
 For the production subset, a second full pass parses both simulated and scan-imitation OBJ meshes. For each mesh, the benchmark computes vertices, faces, used and unused vertices, unique edges, boundary edges, non-manifold edges, connected components, duplicate vertices, degenerate faces, mean and median edge length, 95th-percentile edge length, mean and median triangle area, mean aspect ratio, and 95th-percentile aspect ratio. A triangle with side lengths $(a,b,c)$ is assigned aspect ratio
 \begin{equation}
@@ -97,7 +101,7 @@ where $\epsilon=10^{-12}$ prevents division by zero for degenerate triangles.
 
 The sewing specification is parsed as a pattern graph. Panels are nodes and stitch rules define edges between panels. For each garment, the benchmark computes panel count, pattern-edge count, stitch count, graph components, panel areas, panel perimeters, curved-edge count, and parameter count. Segmentation files are parsed line by line to compute segmentation label counts, panel-label counts, stitch-label fraction, and label entropy.
 
-\subsection{Pattern-Mesh Consistency Score}
+\subsubsection{Pattern-Mesh Consistency Score}
 
 The benchmark defines a learning-free pattern-mesh consistency score to summarize whether the available evidence is jointly usable for reconstruction experiments. For sample $i$, the score averages ten binary or fractional checks:
 \begin{equation}
@@ -109,7 +113,9 @@ q_{\mathrm{seg}}=\min\left(1,\frac{L_{\mathrm{panel}}}{\max(P,1)}\right),
 \end{equation}
 where $L_{\mathrm{panel}}$ is the number of non-stitch segmentation labels and $P$ is the number of pattern panels.
 
-\subsection{Retrieval and Reconstruction Baselines}
+\subsection{Baselines and Generalization Protocols}
+
+\subsubsection{Retrieval and Reconstruction Baselines}
 
 To move from data audit to benchmark evaluation, the production subset is split by category into 70\% training, 15\% validation, and 15\% test samples. The test split contains 3,368 samples and the training split contains 15,715 samples. We evaluate nearest-neighbor retrieval baselines using four feature groups: pattern features, mesh features, segmentation features, and combined features. Continuous features are standardized using training-set statistics. For each test sample $x$, the nearest training samples are ranked by squared Euclidean distance,
 \begin{equation}
@@ -117,7 +123,7 @@ d(x,z)=\|\hat{x}-\hat{z}\|_2^2.
 \end{equation}
 The retrieved neighbor is also treated as a simple reconstruction baseline for predicting panel and stitch counts. The evaluation reports top-1 accuracy, top-5 accuracy, mean reciprocal rank (MRR), panel-count mean absolute error, and stitch-count mean absolute error.
 
-\subsection{Render-Image Retrieval Baseline}
+\subsubsection{Render-Image Retrieval Baseline}
 
 Because many reconstruction settings begin from rendered or photographed garments rather than meshes or segmentation labels, we also evaluate a deterministic render-to-pattern retrieval baseline. For each production sample, front and back renders are read directly from the verified archives. Each view is converted into a 375-dimensional descriptor consisting of a \(16\times16\) grayscale thumbnail, edge-filter responses, 16-bin RGB histograms, channel means, channel standard deviations, and a view-presence indicator. The paired render descriptor concatenates front-view features, back-view features, and the absolute front-back feature difference:
 \begin{equation}
@@ -125,7 +131,7 @@ Because many reconstruction settings begin from rendered or photographed garment
 \end{equation}
 Nearest-neighbor retrieval is evaluated on the same 70/15/15 split as the structured-feature baselines. Missing renders are represented by zero descriptors with the presence indicator set to zero, preserving the full 22,450-sample production scope.
 
-\subsection{Hard-Generalization Protocols}
+\subsubsection{Hard-Generalization Protocols}
 
 The stratified split measures in-distribution retrieval, but it can overstate reconstruction generalization when category identity and sewing-pattern templates are tightly coupled. We therefore add three harder protocols. First, leave-one-category-out evaluation trains the nearest-neighbor index on 11 categories and tests on the excluded category. Because the exact category is absent from the training set, the evaluation reports family-level transfer, exact panel-count transfer, exact stitch-count transfer, and panel/stitch mean absolute error rather than ordinary category top-1 accuracy. Second, paired transfer trains on one related source category and tests on a target variant, such as straight-side pants to waistband pants or jacket to hooded jacket. Third, render-noise stress keeps the original split but adds Gaussian perturbations to the test render descriptors. These protocols are intended to diagnose benchmark difficulty, not to replace task-specific learned reconstruction models.
 
@@ -160,7 +166,9 @@ Step & Operation \\
 
 \section{Results}\label{sec:results}
 
-\subsection{Full Download and Verification}
+\subsection{Evidence and Category Structure}
+
+\subsubsection{Full Download and Verification}
 
 All 14 files in the Zenodo record were verified successfully. The verified corpus includes 84.77 GB of compressed data. The final audit contains 22,457 samples: 22,450 production samples and 7 official test samples. The full experiment completed with 22,452 complete samples, corresponding to a complete-evidence rate of 99.98\%. Only five samples have missing evidence.
 
@@ -185,7 +193,7 @@ Complete-evidence rate & 99.98\% \\
 \end{tabular}
 \end{table}
 
-\subsection{Category Coverage and Pattern Complexity}
+\subsubsection{Category Coverage and Pattern Complexity}
 
 Table~\ref{tab:categorysummary} reports the full production category summary. The dataset spans low-complexity garments such as straight-side pants and two-panel skirts, intermediate garments such as dresses and jumpsuits, and high-complexity garments such as jackets and hooded jackets. Pattern complexity ranges from two panels and four stitches in simple skirts or sleeveless tees to nine panels and eighteen stitches in hooded jackets. Mean simulated mesh complexity ranges from 11,992 faces for straight-side pants to 37,743 faces for hooded jackets.
 
@@ -228,11 +236,13 @@ Jacket hood & 2,700 & 2,700 & 100.000 & 37,743 & 9/47/18 \\
 \label{fig:complexity}
 \end{figure}
 
-\subsection{Missing Evidence}
+\subsubsection{Missing Evidence}
 
 Missing evidence is rare. The five incomplete samples occur in three production categories: sleeveless dresses, sleeveless jumpsuits, and eight-panel skirts. Missing items include five missing front renders, two missing back renders, two missing simulated OBJ meshes, two missing scan-imitation OBJ meshes, and corresponding segmentation files. This suggests that the full dataset is highly usable for pattern-reconstruction experiments, although split construction should either exclude the five incomplete samples or explicitly mark them as failure cases.
 
-\subsection{Mesh Quality Benchmark}
+\subsection{Mesh, Pattern, and Consistency Results}
+
+\subsubsection{Mesh Quality Benchmark}
 
 The quantitative benchmark parses 22,450 production samples and computes mesh descriptors for both simulated and scan-imitation meshes. Table~\ref{tab:meshquality} shows that mean simulated face counts range from 11,992 for straight-side pants to 37,743 for hooded jackets. Scan-imitation meshes are usually slightly lighter than simulated meshes, with the largest reductions appearing in skirt-8 and waistband-dress categories. Across categories, mean triangle aspect ratios remain close to 1.33--1.35, indicating mostly regular triangulation under the implemented metric. Non-manifold edges are zero at category mean level, while boundary edges remain nonzero because garment surfaces are open along hems, seams, and garment boundaries.
 
@@ -268,7 +278,7 @@ Jacket hood & 2,700 & 37,743 & 35,685 & 548 & 1,083 & 1.335 & 1.335 \\
 \label{fig:meshquality}
 \end{figure}
 
-\subsection{Pattern Structure Benchmark}
+\subsubsection{Pattern Structure Benchmark}
 
 The pattern-graph benchmark confirms that the corpus contains a structured complexity ladder rather than a flat set of templates. Simple categories such as two-panel skirts and sleeveless tees contain two panels and four stitches. Intermediate categories include pants with four panels and six stitches, sleeveless dresses with four panels and ten stitches, and jumpsuits with six panels and fourteen stitches. The most complex category, hooded jackets, contains nine panels and eighteen stitches. Figure~\ref{fig:patternstructure} visualizes the category-level panel, stitch, and curved-edge statistics. Figure~\ref{fig:skirtladder} isolates the skirt categories, showing that panel count, stitch count, boundary edges, and mesh resolution increase together from two-panel to eight-panel skirts.
 
@@ -286,7 +296,7 @@ The pattern-graph benchmark confirms that the corpus contains a structured compl
 \label{fig:skirtladder}
 \end{figure}
 
-\subsection{Pattern-Mesh Consistency}
+\subsubsection{Pattern-Mesh Consistency}
 
 The proposed consistency score is intentionally strict: it requires pattern panels, stitch rules, simulated and scan meshes, zero non-manifold edges, sufficient segmentation labels, and agreement between segmentation length and mesh vertices. Despite this, 22,448 of 22,450 production samples receive a perfect score of 100. The remaining two samples fall below 70 because required mesh and segmentation evidence is absent. The mean production consistency score is 99.996. This result is important for downstream reconstruction work: most samples can be used directly, and the few failures can be isolated deterministically rather than discovered during model training.
 
@@ -304,7 +314,9 @@ The proposed consistency score is intentionally strict: it requires pattern pane
 \label{fig:consistencycomponents}
 \end{figure}
 
-\subsection{Retrieval and Reconstruction Baselines}
+\subsection{Retrieval and Generalization Results}
+
+\subsubsection{Retrieval and Reconstruction Baselines}
 
 Table~\ref{tab:retrieval} reports retrieval-style reconstruction baselines on the stratified test split. Random category prediction obtains 8.14\% top-1 accuracy and the majority-category baseline obtains 12.02\%. Mesh-only nearest-neighbor retrieval is substantially stronger, reaching 77.32\% top-1, 95.43\% top-5, and 0.850 MRR. Segmentation-only features improve top-1 accuracy to 88.12\%. Pattern-only features reach 100\% because the pattern descriptors expose category-defining template structure. Combined features reach 99.97\% top-1 and near-zero panel and stitch errors.
 
@@ -342,7 +354,7 @@ NN combined & 31 & 3,368 & 0.9997 & 0.9997 & 0.9997 & 0.001/0.002 \\
 \label{fig:modalityablation}
 \end{figure}
 
-\subsection{Render-to-Pattern Retrieval Baseline}
+\subsubsection{Render-to-Pattern Retrieval Baseline}
 
 Table~\ref{tab:renderretrieval} reports deterministic render-image retrieval on the same split. Front-view descriptors alone achieve 99.73\% top-1 accuracy and 99.97\% top-5 accuracy. Back-view descriptors perform similarly. The paired front-back descriptor reaches 99.70\% top-1 accuracy and 99.97\% top-5 accuracy. Panel and stitch errors are near zero because nearest rendered neighbors almost always come from the correct category and template family.
 
@@ -377,7 +389,7 @@ NN front+back render & 1,125 & 3,368 & 0.9970 & 0.9997 & 0.9983 & 0.005/0.011 \\
 \label{fig:renderexamples}
 \end{figure}
 
-\subsection{Render Retrieval Error Analysis}
+\subsubsection{Render Retrieval Error Analysis}
 
 The paired render baseline makes only ten top-1 category errors on 3,368 test samples. Figure~\ref{fig:rendererrors} shows these errors. They are not arbitrary: two jacket samples retrieve tees, two tee samples retrieve jackets, one tee retrieves a sleeveless tee, pants and waistband pants are confused in both directions, one eight-panel skirt retrieves straight pants, and one waistband dress retrieves a jumpsuit. In each case, the correct category is still close in the ranking, typically rank two or three. The only larger failure is the eight-panel skirt case, where the true category appears at rank six because the visible lower-body silhouette is weak in the resized descriptor.
 
@@ -390,7 +402,7 @@ This pattern supports a useful failure taxonomy. First, upper-body silhouettes c
 \label{fig:rendererrors}
 \end{figure}
 
-\subsection{Hard-Generalization Analysis}
+\subsubsection{Hard-Generalization Analysis}
 
 The high in-distribution retrieval scores should not be read as evidence that sewing-pattern reconstruction is solved. Table~\ref{tab:hardgeneralization} reports harder tests that remove exact category matches or perturb the render descriptor. In leave-one-category-out evaluation, structured descriptors preserve panel counts better than render descriptors, reaching 60.64\% mean panel-exact transfer and 49.87\% mean stitch-exact transfer. Render descriptors retain stronger family-level transfer, at 52.92\%, but fall to 13.14\% panel-exact and 15.29\% stitch-exact transfer. This contrast is expected: render appearance is useful for visual family matching, whereas pattern/mesh/segmentation descriptors encode more direct construction evidence.
 
@@ -481,9 +493,9 @@ Nevertheless, the benchmark provides a concrete protocol for building such a dat
 
 This paper does not train a deep reconstruction network and does not claim state-of-the-art image-to-pattern generation. The nearest-neighbor baselines are intentionally transparent and feature-based; they establish lower-cost reference points rather than replacing learned models. The benchmark does not yet evaluate Chamfer distance, normal consistency, IoU, physical simulation stability under predicted patterns, or texture/motif alignment. The dataset is synthetic and generated from template families, so results should not be interpreted as direct coverage of all real garments or traditional costume forms. Finally, pattern-only and combined baselines are very strong because structured pattern descriptors encode category-level template identity; future work should therefore separate input modalities carefully and report image-only or mesh-only settings when claiming reconstruction ability from weak evidence.
 
-\section{Reproducibility and Extended Diagnostics}\label{sec:reproducibility}
+\subsection{Reproducibility and Extended Diagnostics}\label{sec:reproducibility}
 
-\subsection{Benchmark Split Details}\label{sec:splits}
+\subsubsection{Benchmark Split Details}\label{sec:splits}
 
 Table~\ref{tab:splits} gives the exact stratified split used by the retrieval and reconstruction baselines. The split is deterministic with a fixed random seed and preserves the category distribution of the full 22,450-sample production subset.
 
@@ -513,7 +525,7 @@ Total & 15,715 & 3,367 & 3,368 & 22,450 \\
 \end{tabular}
 \end{table}
 
-\subsection{Per-Category Retrieval Diagnostics}\label{sec:percat}
+\subsubsection{Per-Category Retrieval Diagnostics}\label{sec:percat}
 
 Table~\ref{tab:percategory} reports category-level top-1 retrieval accuracy for mesh-only, segmentation-only, and combined nearest-neighbor baselines. Mesh-only retrieval is strong for pants and waistband variants but substantially weaker for jackets, hooded jackets, tees, and sleeveless tees, where geometry statistics alone confuse related upper-body garments. Segmentation features improve jacket and hooded-jacket separation but are weaker on some skirt and dress variants. The combined feature set is nearly perfect, with a single observed category error in the tee category.
 
@@ -542,7 +554,7 @@ WB pants straight & 225 & 0.991 & 0.924 & 1.000 \\
 \end{tabular*}
 \end{table}
 
-\subsection{Ablation Matrix and Error Counts}\label{sec:ablation}
+\subsubsection{Ablation Matrix and Error Counts}\label{sec:ablation}
 
 Table~\ref{tab:ablationmatrix} consolidates all retrieval settings into a single ablation ladder. The ordering is informative. Mesh statistics are useful but remain a relatively weak proxy for sewing-pattern identity. Segmentation labels are closer to pattern structure and improve both category retrieval and count prediction. Render descriptors are much stronger in this controlled corpus, but the error gallery in Fig.~\ref{fig:rendererrors} shows that the remaining mistakes occur between visually similar families. Pattern and combined structured features form an upper-bound setting rather than a realistic weak-input setting, because they expose the target construction evidence directly.
 
@@ -590,7 +602,7 @@ Eight-panel skirt $\rightarrow$ pants & 1 & Lower-body shape is underrepresented
 \end{tabular}
 \end{table}
 
-\section{Retrieval Confusion Matrices}\label{sec:confusion}
+\subsubsection{Retrieval Confusion Matrices}\label{sec:confusion}
 
 The confusion matrices in Fig.~\ref{fig:confusionpanel} diagnose where the feature families fail. Mesh-only retrieval produces meaningful off-diagonal structure: jackets and hooded jackets are often confused with each other, tees and sleeveless tees are confused with related upper-body garments, and skirt categories occasionally shift along the skirt complexity ladder. Segmentation features reduce jacket/hood confusion because panel labels encode stronger structural evidence. Combined features nearly diagonalize the confusion matrix. The paired render descriptor is also nearly diagonal, confirming that controlled rendered appearance is a very strong category cue in this corpus. The pattern-only confusion matrix is retained as an experiment artifact but omitted from the paper layout because Table~\ref{tab:ablationmatrix} already reports the perfect pattern-descriptor upper bound.
 
@@ -601,7 +613,7 @@ The confusion matrices in Fig.~\ref{fig:confusionpanel} diagnose where the featu
 \label{fig:confusionpanel}
 \end{figure}
 
-\section{Metric Definitions and Reproducibility Notes}\label{sec:metrics}
+\subsubsection{Metric Definitions and Reproducibility Notes}\label{sec:metrics}
 
 The benchmark outputs one measurement row per production sample and keeps the following metric groups. Evidence metrics record the presence of front and back renders, raster and vector pattern evidence, simulated and scan-imitation meshes, mesh segmentations, and garment specifications. Pattern metrics record panel count, pattern-edge count, stitch count, graph components, mean panel area, total panel area, mean panel perimeter, curved-edge count, and parameter count. Mesh metrics are computed separately for simulated and scan-imitation meshes and include vertices, faces, used and unused vertices, unique edges, boundary edges, non-manifold edges, connected components, duplicate vertices, degenerate faces, edge-length statistics, triangle-area statistics, and aspect-ratio statistics. Segmentation metrics include total segmentation lines, label count, non-stitch panel-label count, stitch-label fraction, and label entropy.
 
@@ -609,7 +621,7 @@ All heavy metrics are computed by streaming archive members directly from the ve
 
 The render-image baseline uses deterministic descriptors rather than learned visual embeddings. This choice keeps the baseline reproducible without GPU training and exposes how much category information is already available from controlled render appearance. Each view descriptor contains a low-resolution grayscale thumbnail, edge-filter responses, RGB histograms, channel means, channel standard deviations, and a binary view-presence indicator. The paired descriptor concatenates front, back, and absolute front-back difference descriptors. This baseline should be interpreted as an in-distribution render retrieval test, not as a claim that real photographs can be reconstructed at the same accuracy.
 
-\section{Artifact Inventory}\label{sec:artifacts}
+\subsubsection{Artifact Inventory}\label{sec:artifacts}
 
 Table~\ref{tab:artifacts} summarizes the concrete artifacts produced by the benchmark. The separation into experiment directories is intentional: the initial evidence audit, quantitative mesh-pattern benchmark, structured-feature retrieval, render-image retrieval, and manuscript-specific diagnostic figures can be rerun or inspected independently.
 
@@ -630,7 +642,7 @@ Extra manuscript figures & Code-generated render error gallery and traditional-g
 \end{tabular}
 \end{table}
 
-\section{Evaluation Protocol Card}\label{sec:protocol}
+\subsubsection{Evaluation Protocol Card}\label{sec:protocol}
 
 The benchmark is intended to separate evidence quality from model ability. Table~\ref{tab:protocolcard} states the recommended interpretation of each metric group. This prevents a common error in garment reconstruction papers: treating high category retrieval accuracy as if it were already evidence of accurate sewing-pattern reconstruction.
 
@@ -655,7 +667,7 @@ Render baseline & Controlled rendered views contain strong category and template
 
 For future learned models, we recommend reporting at least four settings: image-only, mesh-only, segmentation-assisted, and pattern-assisted. Image-only experiments should include the deterministic render baseline. Mesh-only experiments should compare against the mesh nearest-neighbor baseline. Segmentation-assisted experiments should state whether segmentation is ground truth or predicted. Pattern-assisted experiments should be treated as upper-bound or retrieval settings unless the pattern input is intentionally part of the task.
 
-\section{Traditional-Garment Dataset Schema}\label{sec:traditionalschema}
+\subsubsection{Traditional-Garment Dataset Schema}\label{sec:traditionalschema}
 
 Table~\ref{tab:traditionalschema} gives a minimum schema for extending the benchmark toward traditional garments. The schema is phrased generically, but it is motivated by garments such as the Vietnamese \textit{ao dai}, where silhouette, side openings, collar construction, trouser pairing, and motif placement are culturally meaningful rather than cosmetic metadata.
 

@@ -1,0 +1,93 @@
+# PAPER_CHECKER report for Paper 2
+
+Date: 2026-07-10
+
+Paper: `02_pattern_reconstruction`
+
+Manuscript: `main.tex`
+
+PDF: `main.pdf`
+
+Layout contact sheet: `layout_review/contact_sheet.png`
+
+Artifact repository: https://github.com/ictu-se/sewing-pattern-reconstruction-benchmark
+
+## Summary
+
+Status: PASS after corrections.
+
+The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually reviewed from a page contact sheet. The main correction was structural: the manuscript now follows a clean Springer-compatible IMRAD-like organization with five top-level sections and no appendix. Dense diagnostic material remains integrated into the main paper under `Discussion`, as requested.
+
+## Automated checks
+
+| Check | Result | Status |
+|---|---:|---|
+| PDF pages | 31 | PASS |
+| PDF page size | A4 | PASS |
+| Abstract length | 227 words | PASS |
+| Introduction length | 820 words | PASS |
+| Keywords | 5 | PASS |
+| Top-level sections | Introduction, Methods, Results, Discussion, Conclusion | PASS |
+| Methods subsections | 3 | PASS |
+| Results subsections | 3 | PASS |
+| Discussion subsections | 3 | PASS |
+| Citation occurrences | 18 | PASS |
+| Unique cited references | 11 | PASS |
+| BibTeX entries | 11 | PASS |
+| Uncited BibTeX entries | 0 | PASS |
+| Missing BibTeX entries | 0 | PASS |
+| DOI-bearing references | 11/11 | PASS |
+| URL fields in BibTeX | 0 | PASS |
+| Missing figure files | 0 | PASS |
+| Appendix mentions | 0 | PASS |
+| Target-journal/editor traces | 0 | PASS |
+| TODO/FIXME/placeholder traces | 0 | PASS |
+| Local path traces | 0 | PASS |
+
+## LaTeX build
+
+The manuscript was rebuilt with the full sequence:
+
+```text
+pdflatex -> bibtex -> pdflatex -> pdflatex
+```
+
+The final log was checked for serious build and layout signals:
+
+```text
+undefined
+Citation
+Reference
+Overfull
+LaTeX Error
+Emergency stop
+pdfTeX warning
+Warning: Citation
+```
+
+No matches were found.
+
+## Layout review
+
+The final PDF was rendered into page screenshots and combined into:
+
+```text
+layout_review/contact_sheet.png
+```
+
+Visual review found no broken pages, missing figures, unresolved references, or obvious text overflow. The last diagnostic pages are still table/figure-heavy and slightly airy in places, but this is acceptable because the extended diagnostics were intentionally integrated into the main text instead of being moved to an appendix.
+
+## Fixes made while running the checker
+
+- Reorganized the top-level manuscript structure to `Introduction`, `Methods`, `Results`, `Discussion`, and `Conclusion`.
+- Reduced top-level subsection counts by demoting detailed method/result/diagnostic headings to `\subsubsection`.
+- Kept all extended diagnostics inside the main manuscript, with no appendix.
+- Rebuilt the PDF and regenerated the layout contact sheet after the structural changes.
+- Verified that references are fully cited and DOI-complete.
+- Verified that the manuscript has no journal-targeting or editor-targeting traces.
+
+## Residual risks
+
+- Several tables necessarily use compact font sizes because the target Springer double-column layout is dense.
+- The final pages include integrated diagnostic inventories and protocol tables; they are scientifically useful, but visually denser than the main results pages.
+- The raw 84.77 GB source dataset is not included in the GitHub artifact repository; this is documented through Zenodo plus the public reproducibility repository.
