@@ -42,6 +42,7 @@ The manuscript was checked against `PAPER_CHECKER.md`, rebuilt, and visually rev
 | TikZ/PGF figures | 0 | PASS |
 | Non-data schematic figures in manuscript | 0 | PASS |
 | Included empirical figures/evidence panels | 12 | PASS |
+| Manual table font-size commands | 0 | PASS |
 | Short paragraph candidates | 0 | PASS |
 | Low-variation numeric table columns | 0 remaining after cleanup | PASS |
 | Appendix mentions | 0 | PASS |
@@ -92,6 +93,7 @@ Visual review found no broken pages, missing figures, unresolved references, or 
 - Expanded short diagnostic paragraphs so the manuscript no longer has paragraph-length candidates below the checker threshold.
 - Removed or summarized low-variation data displays: the category-completeness percentage column, mesh aspect-ratio columns, the consistency-score histogram, the near-identical render-baseline table/plot, and the near-constant combined-feature per-category column.
 - Removed schematic/non-data figures from the manuscript, including the benchmark pipeline, consistency-component schematic, traditional-gap map, and traditional-schema flow. The manuscript now has no TikZ/PGF drawings and retains only empirical charts, qualitative experimental evidence, and confusion-matrix/error panels derived from the study outputs.
+- Removed manual table font-size commands. Tables now use the class/default table typography; the two wider tables were compacted by shortening labels and using paragraph-width columns rather than reducing font size.
 - Verified that references are fully cited and DOI-complete.
 - Verified that the manuscript has no journal-targeting or editor-targeting traces.
 

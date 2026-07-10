@@ -139,7 +139,6 @@ The stratified split measures in-distribution retrieval, but it can overstate re
 \begin{table}[!htbp]
 \caption{Algorithmic summary of the implemented full-data benchmark.}\label{tab:algorithm}
 \centering
-\footnotesize
 \begin{tabular}{ll}
 \toprule
 Step & Operation \\
@@ -169,7 +168,6 @@ All 14 files in the Zenodo record were verified successfully. The verified corpu
 \begin{table}[!htbp]
 \caption{Full-data scope and evidence completeness.}\label{tab:scope}
 \centering
-\footnotesize
 \begin{tabular}{lr}
 \toprule
 Measurement & Value \\
@@ -194,7 +192,6 @@ Table~\ref{tab:categorysummary} reports the full production category summary. Th
 \begin{table}[!htbp]
 \caption{Production category summary from the full 22,450-sample garment-pattern audit. \(F_s\) is mean simulated face count. P/E/S gives mean panel, pattern-edge, and stitch counts.}\label{tab:categorysummary}
 \centering
-\footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr}
 \toprule
@@ -243,7 +240,6 @@ The quantitative benchmark parses 22,450 production samples and computes mesh de
 \begin{table}[!htbp]
 \caption{Full production mesh-quality summary from simulated and scan-imitation meshes. Low-variation aspect-ratio columns are omitted from the table and summarized in text.}\label{tab:meshquality}
 \centering
-\footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr}
 \toprule
@@ -305,7 +301,6 @@ The reconstruction interpretation is deliberately simple: the nearest training s
 \begin{table}[!htbp]
 \caption{Retrieval and reconstruction baselines on the 3,368-sample stratified test split. MAE is computed between the retrieved training pattern and the ground-truth test pattern.}\label{tab:retrieval}
 \centering
-\footnotesize
 \begin{tabular}{lrrrrr}
 \toprule
 Baseline & Features & Top-1 & Top-5 & MRR & Panel/Stitch MAE \\
@@ -371,18 +366,17 @@ The render-noise stress test further clarifies the role of controlled rendering.
 \begin{table}[!htbp]
 \caption{Hard-generalization summary. Leave-one-category-out results are averaged over 12 held-out categories. Render-noise rows use the original stratified split with perturbed test descriptors.}\label{tab:hardgeneralization}
 \centering
-\footnotesize
-\begin{tabular}{llrrrr}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrr}
 \toprule
-Protocol & Feature set & Family & Panel exact & Stitch exact & Panel/Stitch MAE \\
+Protocol & Features & Family & Panel & Stitch & Count MAE \\
 \midrule
-Leave-one-category-out & Structured & 0.2342 & 0.6064 & 0.4987 & 0.644/1.452 \\
-Leave-one-category-out & Render pair & 0.5292 & 0.1314 & 0.1529 & 2.918/5.892 \\
-Render noise, \(\sigma=0.00\) & Render pair & 0.9985 & 0.9973 & 0.9982 & 0.005/0.011 \\
-Render noise, \(\sigma=0.05\) & Render pair & 0.2337 & 0.2007 & 0.1793 & 2.672/5.065 \\
-Render noise, \(\sigma=0.35\) & Render pair & 0.2283 & 0.2034 & 0.1948 & 2.649/4.992 \\
+LOCO & Structured & 0.2342 & 0.6064 & 0.4987 & 0.644/1.452 \\
+LOCO & Render pair & 0.5292 & 0.1314 & 0.1529 & 2.918/5.892 \\
+Noise \(\sigma=0.00\) & Render pair & 0.9985 & 0.9973 & 0.9982 & 0.005/0.011 \\
+Noise \(\sigma=0.05\) & Render pair & 0.2337 & 0.2007 & 0.1793 & 2.672/5.065 \\
+Noise \(\sigma=0.35\) & Render pair & 0.2283 & 0.2034 & 0.1948 & 2.649/4.992 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \begin{figure}[!htbp]
@@ -420,7 +414,6 @@ The motivation for this study includes traditional costume modeling, but the cur
 \begin{table}[!htbp]
 \caption{Traditional-garment transfer requirements and how the audited dataset can or cannot support them.}\label{tab:traditionalgap}
 \centering
-\scriptsize
 \setlength{\tabcolsep}{2pt}
 \begin{tabular}{p{0.20\textwidth}p{0.18\textwidth}p{0.12\textwidth}p{0.36\textwidth}}
 \toprule
@@ -453,7 +446,6 @@ Table~\ref{tab:splits} gives the exact stratified split used by the retrieval an
 \begin{table}[!htbp]
 \caption{Deterministic 70/15/15 category-stratified split used for retrieval and reconstruction baselines.}\label{tab:splits}
 \centering
-\footnotesize
 \begin{tabular}{lrrrr}
 \toprule
 Category & Train & Validation & Test & Total \\
@@ -483,7 +475,6 @@ Table~\ref{tab:percategory} reports category-level top-1 retrieval accuracy for 
 \begin{table}[!htbp]
 \caption{Per-category top-1 retrieval accuracy for mesh-only and segmentation-only nearest-neighbor baselines. The near-constant combined-feature column is omitted.}\label{tab:percategory}
 \centering
-\footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr}
 \toprule
@@ -513,7 +504,6 @@ Table~\ref{tab:ablationmatrix} consolidates all retrieval settings into a single
 \caption{Full modality ablation matrix for the retrieval-style reconstruction benchmark.}
 \label{tab:ablationmatrix}
 \centering
-\footnotesize
 \begin{tabular}{lrrrrr}
 \toprule
 Input modality & Features & Top-1 & Top-5 & MRR & Count MAE \\
@@ -537,8 +527,7 @@ The paired render descriptor produces only ten top-1 errors over 3,368 test samp
 \caption{Top-1 error summary for paired front/back render retrieval.}
 \label{tab:rendererrorsummary}
 \centering
-\footnotesize
-\begin{tabular}{lrr}
+\begin{tabular}{p{0.28\textwidth}rp{0.52\textwidth}}
 \toprule
 Confusion pair & Errors & Interpretation \\
 \midrule
@@ -579,7 +568,6 @@ Table~\ref{tab:artifacts} summarizes the concrete artifacts produced by the benc
 \begin{table}[!htbp]
 \caption{Experiment artifact inventory.}\label{tab:artifacts}
 \centering
-\footnotesize
 \begin{tabular}{p{0.24\textwidth}p{0.66\textwidth}}
 \toprule
 Experiment & Main artifacts \\
@@ -600,7 +588,6 @@ The benchmark is intended to separate evidence quality from model ability. Table
 \begin{table}[!htbp]
 \caption{Recommended interpretation of benchmark metric groups.}\label{tab:protocolcard}
 \centering
-\footnotesize
 \begin{tabular}{p{0.22\textwidth}p{0.34\textwidth}p{0.34\textwidth}}
 \toprule
 Metric group & What it proves & What it does not prove \\
@@ -625,7 +612,6 @@ Table~\ref{tab:traditionalschema} gives a minimum schema for extending the bench
 \begin{table}[!htbp]
 \caption{Minimum schema for a traditional-garment pattern-reconstruction dataset.}\label{tab:traditionalschema}
 \centering
-\footnotesize
 \begin{tabular}{p{0.24\textwidth}p{0.66\textwidth}}
 \toprule
 Field group & Required content \\
