@@ -158,13 +158,6 @@ Step & Operation \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_benchmark_pipeline.png}
-\caption{Overview of the full-data benchmark pipeline and its main outputs. Each stage is implemented as a reproducible script and writes inspectable CSV, JSON, markdown, or figure artifacts.}
-\label{fig:pipeline}
-\end{figure}
-
 \section{Results}\label{sec:results}
 
 \subsection{Evidence and Category Structure}
@@ -299,14 +292,7 @@ The pattern-graph benchmark confirms that the corpus contains a structured compl
 
 \subsubsection{Pattern-Mesh Consistency}
 
-The proposed consistency score is intentionally strict: it requires pattern panels, stitch rules, simulated and scan meshes, zero non-manifold edges, sufficient segmentation labels, and agreement between segmentation length and mesh vertices. Despite this, 22,448 of 22,450 production samples receive a perfect score of 100. The remaining two samples fall below 70 because required mesh and segmentation evidence is absent. The mean production consistency score is 99.996. Because this distribution is almost degenerate, the histogram is omitted and the result is reported in text instead. This result is important for downstream reconstruction work: most samples can be used directly, and the few failures can be isolated deterministically rather than discovered during model training.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig_consistency_components.png}
-\caption{Components of the proposed pattern-mesh consistency score. The score acts as a pre-training gate for verifying that pattern, mesh, and segmentation evidence are jointly usable.}
-\label{fig:consistencycomponents}
-\end{figure}
+The proposed consistency score is intentionally strict: it requires pattern panels, stitch rules, simulated and scan meshes, zero non-manifold edges, sufficient segmentation labels, and agreement between segmentation length and mesh vertices. Despite this, 22,448 of 22,450 production samples receive a perfect score of 100. The remaining two samples fall below 70 because required mesh and segmentation evidence is absent. The mean production consistency score is 99.996. Because this distribution is almost degenerate, the histogram is omitted and the result is reported in text instead; the component checks are defined mathematically in the Methods section rather than shown as a schematic. This result is important for downstream reconstruction work: most samples can be used directly, and the few failures can be isolated deterministically rather than discovered during model training.
 
 \subsection{Retrieval and Generalization Results}
 
@@ -429,7 +415,7 @@ The experiment also clarifies how to extend pattern reconstruction to traditiona
 
 \subsection{Traditional Garment Transfer}
 
-The motivation for this study includes traditional costume modeling, but the current corpus should not be overclaimed as a traditional-garment dataset. Garments such as the Vietnamese \textit{ao dai} require long tunic panels, side slits, collar structures, sleeve variations, layered trousers, and motif alignment rules that are not fully represented by the existing template families. The comparison is therefore framed as a transfer analysis rather than as a claim of immediate cultural-garment coverage. Table~\ref{tab:traditionalgap} and Fig.~\ref{fig:traditionalgap} summarize the transfer gap.
+The motivation for this study includes traditional costume modeling, but the current corpus should not be overclaimed as a traditional-garment dataset. Garments such as the Vietnamese \textit{ao dai} require long tunic panels, side slits, collar structures, sleeve variations, layered trousers, and motif alignment rules that are not fully represented by the existing template families. The comparison is therefore framed as a transfer analysis rather than as a claim of immediate cultural-garment coverage. Table~\ref{tab:traditionalgap} summarizes the transfer gap.
 
 \begin{table}[!htbp]
 \caption{Traditional-garment transfer requirements and how the audited dataset can or cannot support them.}\label{tab:traditionalgap}
@@ -451,13 +437,6 @@ Cultural style labels & None & Missing & Expert-validated cultural taxonomy \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_traditional_gap_map.png}
-\caption{Traditional-garment transfer gap map. Existing structured garment categories provide useful proxies for some geometry and pattern components, but several culturally important requirements remain missing.}
-\label{fig:traditionalgap}
-\end{figure}
 
 Nevertheless, the benchmark provides a concrete protocol for building such a dataset. A traditional-garment extension should collect or generate the same evidence tuple $(I,P,S,M,A)$, verify file-level completeness, compute mesh and pattern-graph descriptors, and report retrieval or reconstruction baselines before introducing a new neural model. This sequence would make the cultural extension auditable in the same way as the current full-data corpus. In this sense, the present work is a foundation study for traditional costume modeling rather than a direct solution to it.
 
@@ -609,7 +588,7 @@ Evidence audit & File manifest, checksum status, full sample evidence table, per
 Quantitative benchmark & Full production benchmark table with pattern, mesh, segmentation, and consistency metrics; per-category quantitative summary; mesh-quality figure; pattern-structure figure; consistency histogram; skirt complexity ladder. \\
 Structured retrieval & Deterministic train/validation/test split, structured-feature nearest-neighbor baselines, per-category top-1 tables, confusion matrices, retrieval benchmark report. \\
 Render retrieval & Cached render-image feature matrix, render feature metadata, front/back/pair render retrieval baselines, render confusion matrix, qualitative retrieval examples, render error gallery. \\
-Extra manuscript figures & Code-generated render error gallery and traditional-garment transfer gap map used by the manuscript. \\
+Extra manuscript figures & Code-generated render error gallery and combined confusion-matrix panel used by the manuscript. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -662,13 +641,6 @@ Evaluation splits & Category-stratified and style-stratified splits, plus cross-
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig_traditional_schema_flow.png}
-\caption{Minimum evidence schema for extending the benchmark toward traditional garments. The schema preserves the core render-pattern-stitch-mesh-attribute tuple and adds material, motif, cultural validation, and cross-style split metadata.}
-\label{fig:traditionalschema}
-\end{figure}
 
 This schema is intentionally stricter than what is needed for generic garment retrieval. Traditional costume modeling risks producing visually plausible but culturally incorrect assets if side slits, collars, layered trousers, textile motifs, and expert labels are absent. The additional fields also support more meaningful generalization tests, such as cross-style, cross-region, or motif-transfer splits. The current benchmark therefore supplies the measurement protocol, while a traditional-garment corpus must supply the missing cultural and construction evidence.
 
